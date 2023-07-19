@@ -1,31 +1,26 @@
-{% extends 'base.html'%}
-{% block content%}
-<head>
-    <style>
-img {
-    border: 5px solid #555;
-  }
-</style>
-</head>
-<h1>happiness</h1>
-<h3>family is our happiness</h3>
-<br/>
-{% for post in post %}
-<ul>
+{% extends 'base.html' %}
 
-    <li>
-        <div class="card" style="width: 16rem; padding:5px; margin:5px;">
-            <img height="200" width="200" src="{{post.image_url}}" class="card-img-top" alt="Post Image">
-            <div class="card-body">
-              <h5 class="card-tittle">{{post.tittle}}</h5>
-              <p class="card-text">{{post.story|slice:"0:50"}}...</p>
-             
-            </div>
-            <div class="card-footer">
-              <small class="text-muted">{{post.created_at}}</small>
-            </div>
-           
-    </li><br/>
-</ul>
-{% endfor %}
-{% endblock %}
+{% block content %}
+  <h1>Hello World</h1>
+  <h3>Page loaded successfully</h3>
+  <br/>
+  <div class="row">
+    {% if posts %} 
+    {% for post in posts %}
+      <div class="card" style="width: 16rem; padding:5px; margin:5px;">
+        <img height="200" width="200" src="{{post.image_url}}" class="card-img-top" alt="Post Image">
+        <div class="card-body">
+          <h5 class="card-title">{{post.title}}</h5>
+          <p class="card-text">{{post.story|slice:"0:50"}}...</p>
+          <a href="#" class="btn btn-primary">Read More</a>
+        </div>
+        <div class="card-footer">
+          <small class="text-muted">{{post.created_at}}</small>
+        </div>
+      </div>
+    {% endfor %}
+    {% else %}
+    <h2 class="text-muted">No Post,hello world</h2>
+  {% endif %}
+    </div>
+{% endblock %}  
